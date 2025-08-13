@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shubham Naik • Technical Specialist Portfolio</title>
+  <meta name="description" content="Portfolio of Shubham Naik – Technical Specialist focused on SaaS Support, API Integrations, ERP Systems, and QA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS Variables (Theme) ===== */
+    :root{
+      --bg: #0b1220;
+      --panel: #10192e;
+      --panel-2: #0d1526;
+      --text: #e6eefc;
+      --muted: #b7c4e1;
+      --accent: #34d399; /* teal-400 */
+      --accent-2: #60a5fa; /* blue-400 */
+      --card-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
+      --radius: 18px;
+      --ring: 0 0 0 3px rgba(52,211,153,0.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f7fafc; --panel:#ffffff; --panel-2:#f3f6fb; --text:#0f172a; --muted:#475569; 
+        --card-shadow: 0 6px 18px rgba(2,6,23,0.06), 0 1px 4px rgba(2,6,23,0.06);
+      }
+    }
+
+    /* ===== Base ===== */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text); background:radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.12), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, rgba(52,211,153,.12), transparent 55%), var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* ===== Layout ===== */
+    .container{width:min(1120px, 92%); margin-inline:auto}
+    header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(12px);
+      background:color-mix(in oklab, var(--panel) 70%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--muted) 25%, transparent);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:.85rem 0}
+    .brand{display:flex; gap:.75rem; align-items:center}
+    .logo{
+      width:36px; height:36px; border-radius:50%;
+      background:conic-gradient(from 210deg, var(--accent), var(--accent-2));
+      box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 25%, transparent), inset 0 0 20px rgba(255,255,255,.15);
+    }
+    .brand h1{font-size:1.05rem; letter-spacing:.4px; margin:0; font-weight:700}
+    nav a{opacity:.9; font-weight:600}
+    .nav-links{display:flex; gap:1rem}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.65rem .95rem; border-radius:10px; font-weight:600}
+    .btn--accent{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#081019; box-shadow:var(--card-shadow)}
+    .btn--ghost{border:1px solid color-mix(in oklab, var(--muted) 30%, transparent); background:transparent}
+
+    /* ===== Hero ===== */
+    .hero{padding:64px 0 28px}
+    .hero-wrap{display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center}
+    .hero h2{font-size:clamp(1.8rem, 3.8vw, 2.6rem); line-height:1.15; margin:0 0 8px}
+    .hero .tag{display:inline-block; font-weight:700; letter-spacing:.08em; font-size:.72rem; text-transform:uppercase; color:#0d1b2a; background:linear-gradient(135deg, var(--accent), var(--accent-2)); padding:.4rem .6rem; border-radius:999px}
+    .lead{font-size:1rem; color:var(--muted)}
+    .hero-cta{display:flex; gap:.75rem; margin-top:16px; flex-wrap:wrap}
+    .card{
+      background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 92%, transparent), color-mix(in oklab, var(--panel-2) 92%, transparent));
+      border:1px solid color-mix(in oklab, var(--muted) 22%, transparent);
+      box-shadow:var(--card-shadow); border-radius:var(--radius);
+    }
+    .avatar-card{padding:16px; display:grid; grid-template-columns:96px 1fr; gap:16px; align-items:center}
+    .avatar{width:96px; height:96px; border-radius:18px; background:
+      radial-gradient(60px 60px at 30% 30%, rgba(255,255,255,.15), transparent 60%),
+      conic-gradient(from 210deg, var(--accent), var(--accent-2));
+      box-shadow: inset 0 0 30px rgba(0,0,0,.35);
+    }
+    .quick{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:6px}
+    .quick a{padding:.55rem .65rem; border:1px dashed color-mix(in oklab, var(--muted) 28%, transparent); border-radius:10px; font-size:.9rem}
+
+    /* ===== Sections ===== */
+    section{padding:34px 0}
+    .section-title{font-size:1.2rem; font-weight:800; letter-spacing:.3px; margin:0 0 14px}
+
+    /* Grid cards */
+    .grid{display:grid; gap:14px}
+    .grid.cols-2{grid-template-columns:repeat(2, 1fr)}
+    .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
+
+    /* Skills */
+    .skill{padding:14px; border-radius:14px; border:1px solid color-mix(in oklab, var(--muted) 25%, transparent); background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+    .skill h4{margin:0 0 8px; font-size:.95rem}
+    .tags{display:flex; flex-wrap:wrap; gap:8px}
+    .tag-pill{font-size:.82rem; padding:.35rem .6rem; border-radius:999px; color:#081019; background:linear-gradient(135deg, var(--accent), var(--accent-2))}
+
+    /* Experience */
+    .timeline{position:relative; padding-left:18px}
+    .timeline:before{content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--accent), var(--accent-2))}
+    .t-item{position:relative; padding:12px 14px 12px 18px; border-radius:14px; margin:10px 0; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, transparent), color-mix(in oklab, var(--panel-2) 88%, transparent)); border:1px solid color-mix(in oklab, var(--muted) 22%, transparent)}
+    .t-item:before{content:""; position:absolute; left:-12px; top:16px; width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 30%, transparent)}
+    .t-meta{display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:center; color:var(--muted); font-weight:600; font-size:.9rem}
+    .t-title{margin:6px 0 8px; font-size:1rem; font-weight:800}
+    .t-list{margin:0; padding-left:1.1rem}
+
+    /* Certifications / Achievements */
+    .badge{display:inline-flex; align-items:center; gap:.5rem; padding:.5rem .7rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--muted) 25%, transparent); background:linear-gradient(135deg, rgba(52,211,153,0.12), rgba(96,165,250,0.12))}
+
+    /* Contact */
+    .contact-card{display:grid; grid-template-columns:1.2fr .8fr; gap:14px; padding:16px}
+    .contact-item{display:flex; align-items:center; gap:.6rem; padding:.65rem .8rem; border-radius:12px; border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)}
+
+    footer{padding:22px 0 40px; color:var(--muted); text-align:center}
+
+    /* ===== Responsive ===== */
+    @media (max-width: 920px){
+      .hero-wrap{grid-template-columns:1fr}
+      .grid.cols-2{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr 1fr}
+      .contact-card{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      .nav-links{display:none}
+      .grid.cols-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Shubham Naik • Technical Specialist</h1>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Highlights</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn--accent" href="resume.pdf" download>Download Résumé</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <span class="tag">SaaS • API Integrations • ERP Support</span>
+        <h2>Solving hairy support problems with calm, methodical precision.</h2>
+        <p class="lead">I help travel and manufacturing businesses keep their platforms fast, reliable, and user-friendly. 7+ years across SaaS, Travel ERP, API integrations, web/mobile apps and QA.</p>
+        <div class="hero-cta">
+          <a class="btn btn--accent" href="#contact">Let’s Work Together</a>
+          <a class="btn btn--ghost" href="mailto:shubhamnaik1524@gmail.com">Email Me</a>
+        </div>
+      </div>
+      <div class="card avatar-card">
+        <div class="avatar" aria-label="Profile image placeholder"></div>
+        <div>
+          <strong>Based in Mumbai, India</strong>
+          <p class="lead" style="margin:.4rem 0 0">Available for Technical Support / Customer Success / API Support roles</p>
+          <div class="quick">
+            <a href="https://www.linkedin.com/in/shubham-naik-a12577236/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/Naik1524" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Toolbox</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <h3 class="section-title">About Me</h3>
+      <div class="card" style="padding:16px">
+        <p class="lead">Technical Support Specialist with a strong focus on API integrations, Travel ERP systems, debugging logs (XML/JSON), and multi-channel client support. I love digging into complex issues, collaborating with dev/QA, and closing the loop with clear communication and documentation.</p>
+        <p style="margin:.6rem 0 0">Highlights: 98% SLA adherence • 50+ monthly client cases • Awarded <b>Most Dependable Player</b> • Experience across Asia, Middle East, Europe & Africa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="container">
+      <h3 class="section-title">Skills & Toolbox</h3>
+      <div class="grid cols-3">
+        <div class="skill">
+          <h4>Core Tech</h4>
+          <div class="tags">
+            <span class="tag-pill">API (POSTMAN)</span>
+            <span class="tag-pill">XML / JSON</span>
+            <span class="tag-pill">SQL</span>
+            <span class="tag-pill">HTML</span>
+            <span class="tag-pill">CSS3</span>
+            <span class="tag-pill">JavaScript (Basics)</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h4>Platforms & Tools</h4>
+          <div class="tags">
+            <span class="tag-pill">Travel ERP</span>
+            <span class="tag-pill">Jira</span>
+            <span class="tag-pill">MELD</span>
+            <span class="tag-pill">Sublime</span>
+            <span class="tag-pill">GitHub</span>
+            <span class="tag-pill">Excel & Word</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h4>Soft Skills</h4>
+          <div class="tags">
+            <span class="tag-pill">Communication</span>
+            <span class="tag-pill">Agile/Scrum</span>
+            <span class="tag-pill">Critical Thinking</span>
+            <span class="tag-pill">Client Training</span>
+            <span class="tag-pill">Documentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience">
+    <div class="container">
+      <h3 class="section-title">Experience</h3>
+      <div class="timeline">
+        <article class="t-item">
+          <div class="t-meta">
+            <span><strong>Sr. Technical Support Specialist</strong> • Qtech Software Pvt Ltd</span>
+            <span>Feb 2023 – Present • Mumbai</span>
+          </div>
+          <h4 class="t-title">Travel ERP • API Integrations • Client Success</h4>
+          <ul class="t-list">
+            <li>Provide end‑to‑end support for a SaaS Travel ERP used by global agencies.</li>
+            <li>Reduced API issue resolution time by ~30% via deep POSTMAN + log analysis.</li>
+            <li>Handle 50+ issues/month with ~98% SLA compliance; proactive Jira updates.</li>
+            <li>QA on UAT & live, replicate issues with SQL and log correlation (XML/JSON).</li>
+          </ul>
+        </article>
+        <article class="t-item">
+          <div class="t-meta">
+            <span><strong>Technical Support Engineer</strong> • Siliconveins Pvt Ltd</span>
+            <span>Aug 2020 – Oct 2022</span>
+          </div>
+          <h4 class="t-title">Web/Mobile App Support • Mentoring</h4>
+          <ul class="t-list">
+            <li>Delivered Tier 1/2 support, coordinated with devs for bug fixes and updates.</li>
+            <li>Mentored 5+ new hires; standardized responses and troubleshooting flows.</li>
+            <li>Awarded <em>Most Dependable Player</em> for consistent high performance.</li>
+          </ul>
+        </article>
+        <article class="t-item">
+          <div class="t-meta">
+            <span><strong>Technical Support Executive</strong> • Parit Software Pvt Ltd</span>
+            <span>Nov 2018 – Aug 2020</span>
+          </div>
+          <h4 class="t-title">Manufacturing ERP • Onsite Implementations</h4>
+          <ul class="t-list">
+            <li>Implemented ERP for clients across multiple states; trained end users.</li>
+            <li>Provided onsite/remote support for ERP, payroll, GST systems.</li>
+            <li>Resolved 100+ implementation/usage issues, ensuring smooth adoption.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT HIGHLIGHTS ===== -->
+  <section id="projects">
+    <div class="container">
+      <h3 class="section-title">Project Highlights & Wins</h3>
+      <div class="grid cols-2">
+        <div class="card" style="padding:14px">
+          <h4 style="margin:6px 0 10px">API Supplier Integration</h4>
+          <p class="lead">Worked with multiple travel API suppliers to integrate and debug connectivity issues; stabilized search/booking flows and documented procedures for repeatability.</p>
+        </div>
+        <div class="card" style="padding:14px">
+          <h4 style="margin:6px 0 10px">Incident Playbooks</h4>
+          <p class="lead">Created step‑by‑step playbooks for common failure modes (auth, rate limits, malformed payloads), improving first‑response quality and reducing escalations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section id="certs">
+    <div class="container">
+      <h3 class="section-title">Certifications</h3>
+      <div class="grid cols-3">
+        <div class="badge">Software Engineer – NIIT</div>
+        <div class="badge">Responsive Web Design – freeCodeCamp</div>
+        <div class="badge">JavaScript – The Net Ninja</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <h3 class="section-title">Contact</h3>
+      <div class="card contact-card">
+        <div>
+          <div class="contact-item">📧 &nbsp;<a href="mailto:shubhamnaik1524@gmail.com">shubhamnaik1524@gmail.com</a></div>
+          <div class="contact-item">📱 &nbsp;<a href="tel:+919137535009">+91 91375 35009</a> &nbsp;•&nbsp; <a href="tel:+917506049661">75060 49661</a></div>
+          <div class="contact-item">🔗 &nbsp;<a href="https://www.linkedin.com/in/shubham-naik-a12577236/" target="_blank" rel="noreferrer">LinkedIn</a> &nbsp;•&nbsp; <a href="https://github.com/Naik1524" target="_blank" rel="noreferrer">GitHub</a></div>
+        </div>
+        <div>
+          <p class="lead" style="margin:0 0 10px"><strong>Looking for:</strong> Technical Support • API/Integration Support • Customer Success (SaaS)</p>
+          <a class="btn btn--accent" href="resume.pdf" download>Download Full Résumé</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Shubham Naik • Built with clean HTML & CSS</div>
+  </footer>
+
+  <script>
+    // Tiny, unobtrusive year injector; safe even if JS is disabled
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
